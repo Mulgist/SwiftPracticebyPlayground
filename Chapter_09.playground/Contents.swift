@@ -343,3 +343,111 @@ for item in list {
     print(item)
 }
 
+let str40 = "Swift Programming"
+if str40.contains("Swift") {
+    // ...
+}
+
+let str41: NSString = "Swift Programming"
+let result12 = str41.range(of: "Swift")
+print("location: \(result12.location)")
+print("length: \(result12.length)")
+
+let str42: NSString = "Swift Programming"
+let result13 = str42.range(of: "Swift")
+if result13.location == NSNotFound {
+    // ...
+}
+
+let str43 = "Swift Programming"
+if let result = str43.range(of: "Swift") {
+    print(result)
+} else {
+    print("Not Found")
+}
+
+let str44 = "String Options"
+str44.range(of: "S", options: .caseInsensitive)
+str44.range(of: "S", options: [.caseInsensitive, .anchored])
+
+let str45 = "Swift"
+let result14 = str45.compare("swift", options: [.caseInsensitive])
+if result14 == .orderedSame {
+    // ...
+}
+
+let precomposed = "\u{D55c}\u{AE00}"
+let decomposed = "\u{1112}\u{1161}\u{11AB}\u{1100}\u{1173}\u{11AF}"
+if decomposed.compare(precomposed) == .orderedSame {
+    print("equal")
+} else {
+    print("not equal")
+}
+
+let precomposed2 = "\u{D55c}\u{AE00}"
+let decomposed2 = "\u{1112}\u{1161}\u{11AB}\u{1100}\u{1173}\u{11AF}"
+if decomposed2.compare(precomposed2, options: [.literal]) == .orderedSame {
+    print("equal")
+} else {
+    print("not equal")
+}
+
+let str46 = "Swift Programming"
+if let result = str46.range(of: "i") {
+    print(str46.distance(from: str46.startIndex, to: result.lowerBound))
+}
+
+let str47 = "Swift Programming"
+if let result = str47.range(of: "i", options: [.backwards]) {
+    print(str47.distance(from: str47.startIndex, to: result.lowerBound))
+}
+
+let str48 = "Swift Programming"
+if let result = str48.range(of: "i", options: [.anchored]) {
+    print(str48.distance(from: str48.startIndex, to: result.lowerBound))
+}
+
+let str49 = "Swift Programming"
+if let result = str49.range(of: "i", options: [.anchored, .backwards]) {
+    print(str49.distance(from: str49.startIndex, to: result.lowerBound))
+}
+
+let file9 = "file9.txt"
+let file10 = "file10.txt"
+var result15 = file9.compare(file10)
+print(result15.rawValue)
+
+result15 = file9.compare(file10, options: [.numeric])
+print(result15.rawValue)
+
+let withoutDiacritic = "A"
+let withDiacritic = "Ä"
+var result16 = withoutDiacritic.compare(withDiacritic)
+print(result16.rawValue)
+
+result16 = withoutDiacritic.compare(withDiacritic, options: [.diacriticInsensitive])
+print(result16.rawValue)
+
+let fullWidth = "\u{30A1}"
+let halfWidth = "\u{FF67}"
+var result17 = fullWidth.compare(halfWidth)
+print(result17.rawValue)
+
+result17 = fullWidth.compare(halfWidth, options: [.widthInsensitive])
+print(result17.rawValue)
+
+let upper = "STRING"
+let lower = "string"
+var result18 = upper.compare(lower, options: [.caseInsensitive])
+print(result18.rawValue)
+
+result18 = upper.compare(lower, options: [.caseInsensitive, .forcedOrdering])
+print(result18.rawValue)
+
+let emailPattern = "([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+).(\\.[0-9a-zA-Z_-]+){1,2}"
+let emailAddress = "user@example.com"
+if let result = emailAddress.range(of: emailPattern, options: [.regularExpression]) {
+    print("valid email")
+} else {
+    print("invalid email")
+}
