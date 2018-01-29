@@ -447,7 +447,178 @@ print(result18.rawValue)
 let emailPattern = "([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+).(\\.[0-9a-zA-Z_-]+){1,2}"
 let emailAddress = "user@example.com"
 if let result = emailAddress.range(of: emailPattern, options: [.regularExpression]) {
-    print("valid email")
+    print("valid email: \(result)")
 } else {
     print("invalid email")
+}
+
+let nsstr3: NSString = "Lorem ipsum"
+print(nsstr3.capitalized)
+print(nsstr3.uppercased)
+print(nsstr3.lowercased)
+
+let str50 = "Lorem ipsum"
+print(str50.capitalized)
+print(str50.uppercased())
+print(str50.lowercased())
+
+var str51: NSString = "777"
+var value = str51.integerValue
+print(value)
+
+str51 = "777 grants all file acccess permissionns to all user types"
+value = str51.integerValue
+print(value)
+
+str51 = "the value 777 grants all file acccess permissionns to all user types"
+value = str51.integerValue
+print(value)
+
+let str52 = "777"
+if let value = Int(str52) {
+    print(value)
+}
+
+let str53 = "america"
+let korean = str53.applyingTransform(StringTransform.latinToHangul, reverse: false)
+print(korean!)
+let hiragana = str53.applyingTransform(StringTransform.latinToHiragana, reverse: false)
+print(hiragana!)
+let katakana = str53.applyingTransform(StringTransform.latinToKatakana, reverse: false)
+print(katakana!)
+
+let language = "Swift"
+let nsstr4 = NSString(format: "Let's learn %@", language)
+print(nsstr4)
+
+let str54 = String(format: "Let's learn %@", language)
+print(str54)
+
+let intValue2 = 123
+var str55 = String(format: "value is %ld", intValue2)
+print(str55)
+
+let integerValue: NSInteger = 456
+str55 = String(format: "value is %d", integerValue)
+print(str55)
+
+let doubleValue2 = 12.34
+str55 = String(format: "value is %f", doubleValue2)
+print(str55)
+str55 = String(format: "value is %e", doubleValue2)
+print(str55)
+
+let floatValue: CGFloat = 56.78
+str55 = String(format: "value is %.1f", floatValue)
+print(str55)
+
+let cString = NSString(string: "C String").utf8String!
+str55 = String(format: "[%-20s]", cString)
+print(str55)
+str55 = String(format: "[%20s]", cString)
+print(str55)
+
+let result19 = "result"
+let doubleValue3 = 12.34
+var str56 = String(format: "The %@ is %.2f.", result19, doubleValue3)
+print(str56)
+str56 = String(format: "%2$.2f is the %1$@.", result19, doubleValue3)
+print(str56)
+
+let result20 = "result"
+let doubleValue4 = 12.34
+var str57 = "The \(result20) is \(doubleValue4)"
+print(str57)
+str57 = "\(doubleValue4) is the \(result20)"
+print(str57)
+
+let result21 = "result"
+let doubleValue5 = 12.34
+let valueStr = String(format: "%1.f", doubleValue5)
+var str58 = "The \(result21) is \(valueStr)"
+print(str58)
+str58 = "The \(result21) is \(round(doubleValue5 * 10.0) / 10.0)"
+print(str58)
+
+let heart: Character = "\u{2665}"
+print(heart)
+
+let precomposedHan = "\u{D55C}"
+print(precomposedHan)
+let decomposedHan = "\u{1112}\u{1161}\u{11AB}"
+print(decomposedHan)
+if precomposedHan == decomposedHan {
+    print("\(precomposedHan) == \(decomposedHan)")
+} else {
+    print("\(precomposedHan) != \(decomposedHan)")
+}
+
+let precomposedHan2: NSString = "\u{D55C}"
+print(precomposedHan2)
+let decomposedHan2: NSString = "\u{1112}\u{1161}\u{11AB}"
+print(decomposedHan2)
+if precomposedHan2 == decomposedHan2 {
+    print("\(precomposedHan2) == \(decomposedHan2)")
+} else {
+    print("\(precomposedHan2) != \(decomposedHan2)")
+}
+
+let precomposedCafe = "caf\u{00E9}"
+print("\(precomposedCafe) - \(precomposedCafe.characters.count)")
+let decomposedCafe = "cafe" + "\u{0301}"
+print("\(decomposedCafe) - \(decomposedCafe.characters.count)")
+if precomposedCafe == decomposedCafe {
+    print("\(precomposedCafe) == \(decomposedCafe)")
+} else {
+    print("\(precomposedCafe) != \(decomposedCafe)")
+}
+
+let precomposedCafe2: NSString = "caf\u{00E9}"
+print("\(precomposedCafe2) - \(precomposedCafe2.length)")
+let decomposedCafe2: NSString = "cafe\u{0301}"
+print("\(decomposedCafe2) - \(decomposedCafe2.length)")
+if precomposedCafe2 == decomposedCafe2 {
+    print("\(precomposedCafe2) == \(decomposedCafe2)")
+} else {
+    print("\(precomposedCafe2) != \(decomposedCafe2)")
+}
+
+let encodings = String.availableStringEncodings
+for encodingConstant in encodings {
+    print("\(encodingConstant.rawValue) - \(String.localizedName(of: encodingConstant))")
+}
+
+let str59 = "String"
+if str.canBeConverted(to: String.Encoding.utf32) {
+    if let encodedData = str59.data(using: String.Encoding.utf32) {
+        print(encodedData)
+    }
+}
+
+let charSet = NSCharacterSet.uppercaseLetters
+let str60 = "loRem Ipsum"
+if let range = str60.rangeOfCharacter(from: charSet) {
+    print(str60.distance(from: str60.startIndex, to: range.lowerBound))
+}
+if let range = str60.rangeOfCharacter(from: charSet, options: [.backwards]) {
+    print(str60.distance(from: str60.startIndex, to: range.lowerBound))
+}
+
+let charSet2 = NSCharacterSet.whitespaces
+let str61 = " A p p l e "
+print("[\(str61)]")
+let result22 = str61.trimmingCharacters(in: charSet2)
+print("[\(result22)]")
+
+let customCharSet = CharacterSet(charactersIn: "#%")
+var tmpSet = CharacterSet.alphanumerics
+tmpSet.insert(charactersIn: "#%")
+tmpSet.remove(charactersIn: "13579")
+let customAlphaNumSet = tmpSet
+
+let emailCharSet = CharacterSet(charactersIn: "@.")
+let emailAddress2 = "userID@example.com"
+let components = emailAddress2.components(separatedBy: emailCharSet)
+for str in components {
+    print(str)
 }
