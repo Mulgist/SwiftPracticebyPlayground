@@ -192,3 +192,179 @@ alphabet15.setArray(["K", "R"])
 print(alphabet15)
 alphabet15.setArray([])
 print(alphabet15)
+
+var alphabet16 = ["A", "B", "C"]
+alphabet16 = ["K", "R"]
+print(alphabet16)
+alphabet16 = []
+print(alphabet16)
+
+var alphabet17 = NSMutableArray(array:["A", "B", "C", "D", "E"])
+alphabet17.removeObject(at: 0)
+print(alphabet17)
+alphabet17.removeObjects(in: NSMakeRange(0, 3))
+print(alphabet17)
+
+var alphabet18 = NSMutableArray(array: ["A", "B", "C", "D", "E"])
+alphabet18.removeLastObject()
+print(alphabet18)
+alphabet18.removeAllObjects()
+print(alphabet18)
+
+var alphabet19 = NSMutableArray(array: ["A", "B", "C", "D", "E"])
+alphabet19.remove("C")
+print(alphabet19)
+
+var alphabet20 = NSMutableArray(array: ["A", "B", "C", "D", "E"])
+alphabet20.remove("C", in: NSMakeRange(0, 2))
+print(alphabet20)
+
+var alphabet21 = ["A", "B", "C", "D", "E"]
+let removed = alphabet21.remove(at: 0)
+print(removed)
+print(alphabet21)
+
+var alphabet22 = ["A", "B", "C", "D", "E"]
+let first3 = alphabet22.removeFirst()
+print(first3)
+print(alphabet22)
+alphabet22.removeFirst(2)
+print(alphabet22)
+let last3 = alphabet22.removeLast()
+print(last3)
+print(alphabet22)
+
+var alphabet23 = ["A", "B", "C", "D", "E"]
+if let last = alphabet23.popLast() {
+    print(last)
+}
+print(alphabet23)
+
+var alphabet24 = ["A", "B", "C", "D", "E"]
+alphabet24.removeAll(keepingCapacity: true)
+print(alphabet24)
+
+let alphabet25 = NSMutableArray(array: ["A", "B", "C", "a", "b", "c"])
+for i in 0..<(alphabet25.count - 1) {
+    let j = Int(arc4random_uniform(UInt32(alphabet25.count - i))) + i
+    swap(&alphabet25[i], &alphabet25[j])
+}
+print(alphabet25)
+let sortedArray = alphabet25.sortedArray(using: #selector(NSString.caseInsensitiveCompare(_:)))
+print(sortedArray)
+alphabet25.sort(using: #selector(NSString.caseInsensitiveCompare(_:)))
+print(alphabet25)
+
+let alphabet26 = NSMutableArray(array: ["A", "B", "C", "a", "b", "c"])
+let sortedArray2 = alphabet26.sortedArray(comparator: { (obj1, obj2 ) -> ComparisonResult in
+    return (obj1 as! String).caseInsensitiveCompare(obj2 as! String)
+})
+print(sortedArray2)
+alphabet26.sort(comparator: { (obj1, obj2 ) -> ComparisonResult in
+    return (obj1 as! String).caseInsensitiveCompare(obj2 as! String)
+})
+
+var alphabet27 = NSMutableArray(array: ["A", "B", "C", "a", "b", "c"])
+for i in 0..<(alphabet27.count - 1) {
+    let j = Int(arc4random_uniform(UInt32(alphabet27.count - i))) + i
+    swap(&alphabet27[i], &alphabet27[j])
+}
+print(alphabet27)
+let asc = NSSortDescriptor(key: "self", ascending: true)
+var sortedArray3 = alphabet27.sortedArray(using: [asc])
+print(sortedArray3)
+let desc = NSSortDescriptor(key: "self", ascending: false)
+sortedArray3 = alphabet27.sortedArray(using: [desc])
+print(sortedArray3)
+
+var alphabet28 = ["A", "B", "C", "D", "E"]
+for i in 0..<(alphabet28.count - 1) {
+    let j = Int(arc4random_uniform(UInt32(alphabet28.count - i))) + i
+    guard i != j else { continue }
+    alphabet28.swapAt(i, j)
+}
+print(alphabet28)
+let sortedArray4 = alphabet28.sorted()
+print(sortedArray4)
+alphabet28.sort()
+print(alphabet28)
+
+var alphabet29 = ["A", "B", "C", "D", "E"]
+for i in 0..<(alphabet29.count - 1) {
+    let j = Int(arc4random_uniform(UInt32(alphabet29.count - i))) + i
+    guard i != j else { continue }
+    alphabet29.swapAt(i, j)
+}
+print(alphabet29)
+let sortedArray5 = alphabet29.sorted { $0 > $1 }
+print(sortedArray5)
+alphabet29.sort { $0 > $1 }
+print(alphabet29)
+
+let alphabet30 = ["A", "B", "C", "D", "E"]
+var result = alphabet30.reversed()
+print(result)
+var result2: [String] = alphabet30.reversed()
+print(result2)
+result2 = [String](alphabet30.reversed())
+print(result2)
+
+let alphabet31: NSArray = ["A", "B", "C", "D", "E"]
+let subArray = alphabet31.subarray(with: NSMakeRange(1, 3))
+print(subArray)
+
+let alphabet32 = ["A", "B", "C", "D", "E"]
+let subArray2 = alphabet32[1..<4]
+print(subArray2)
+
+let alphabet33 = ["A", "B", "C", "D", "E"]
+var result3 = alphabet33.dropFirst()
+print(result3)
+result3 = alphabet33.dropFirst(3)
+print(result3)
+
+let alphabet34 = ["A", "B", "C", "D", "E"]
+var result4 = alphabet34.dropLast()
+print(result4)
+result4 = alphabet34.dropLast(3)
+print(result4)
+
+let alphabet35 = ["A", "B", "C", "D", "E"]
+var result5 = alphabet35.prefix(2)
+print(result5)
+result5 = alphabet35.prefix(upTo: 2)
+print(result5)
+result5 = alphabet35.prefix(through: 2)
+print(result5)
+
+let alphabet36 = ["A", "B", "C", "D", "E"]
+var result6 = alphabet36.suffix(2)
+print(result6)
+result6 = alphabet36.suffix(from: 2)
+print(result6)
+
+let alphabet37: NSArray = ["A", "B", "C", "D", "E"]
+let str = alphabet37.componentsJoined(by: "#")
+print(str)
+
+let alphabet38 = ["A", "B", "C", "D", "E"]
+let str2 = alphabet38.joined(separator: "#")
+print(str2)
+
+let alphabet39 = ["A", "B", "C", "D", "E"]
+let result7 = alphabet39.map { $0.lowercased() }
+print(result7)
+
+var list = ["A", "B", "C"]
+print("total: \(list.capacity), current: \(list.count)")
+list += ["D"]
+print("total: \(list.capacity), current: \(list.count)")
+list += ["E", "F", "G", "H", "I"]
+print("total: \(list.capacity), current: \(list.count)")
+list[1..<6] = ["A"]
+print("total: \(list.capacity), current: \(list.count)")
+var reversedList = [String]()
+
+reversedList.reserveCapacity(100)
+print("total: \(reversedList.capacity), current: \(reversedList.count)")
+
