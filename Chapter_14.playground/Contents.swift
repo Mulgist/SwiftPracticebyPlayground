@@ -368,3 +368,169 @@ var reversedList = [String]()
 reversedList.reserveCapacity(100)
 print("total: \(reversedList.capacity), current: \(reversedList.count)")
 
+let words = ["A": "Apple", "B": "Banana", "C": "City"]
+let nsWords: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+
+var emptyWordDict1: Dictionary<String, String> = [:]
+var emptyWordDict2: [String:String] = [:]
+var emptyWordDict3 = [String:String]()
+let emptyNSDic = NSMutableDictionary()
+
+let words2: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let countOfWords = words2.count
+if countOfWords > 0 {
+    print("\(countOfWords) element(s)")
+} else {
+    print("empty dictionary")
+}
+
+let words3 = ["A": "Apple", "B": "Banana", "C": "City"]
+let countOfWords2 = words3.count
+if !words3.isEmpty {
+    print("\(countOfWords2) element(s)")
+} else {
+    print("empty dictionary")
+}
+
+let words4: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let aValue = words4.object(forKey: "A")
+print(aValue!)
+let zValue = words4.object(forKey: "Z")
+print(zValue)
+
+let words5: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+if let value = words5.object(forKey: "A") {
+    // ...
+}
+
+let words6 = ["A": "Apple", "B": "Banana", "C": "City"]
+if let aValue = words6["A"] {
+    print(aValue)
+} else {
+    print("Not found")
+}
+if let zValue = words6["Z"] {
+    print(zValue)
+} else {
+    print("Not found")
+}
+
+let words7 = ["A": "Apple", "B": "Banana", "C": "City"]
+words7["A"]
+words7["Z"]
+words7["z", default: "No Words"]
+
+let words8: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let keys = words8.allKeys
+print(keys)
+let values = words8.allValues
+print(values)
+
+let words9 = ["A": "Apple", "B": "Banana", "C": "City"]
+let keys2 = Array(words9.keys)
+print(keys2)
+let values2 = Array(words9.values)
+print(values2)
+
+let words10: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let key = "K"
+if let _ = words10.object(forKey: key) {
+    print("The key \"\(key)\" exists.")
+} else {
+    print("The key \"\(key)\" not exists.")
+}
+if words10.allKeys.contains(where: { $0 as! String == key }) {
+    print("The key \"\(key)\" exists.")
+} else {
+    print("The key \"\(key)\" not exists.")
+}
+
+let words11: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let keys3 = words11.allKeys(for: "Apple")
+print("Key count of Apple: \(keys.count)")
+
+let words12: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let result8 = words12.keysOfEntries(passingTest: { (key, obj, stop) -> Bool in
+    if let value = obj as? String {
+        return value.range(of: "a", options: .caseInsensitive) != nil
+    }
+    return false
+})
+for keyObj in result8 {
+    if let key = keyObj as? NSString, let value = words12[key] {
+        print("\(key) - \(value)")
+    }
+}
+
+let words13: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let result9 = words13.keysOfEntries(options: [], passingTest: { (key, obj, stop) -> Bool in
+    if let value = obj as? String {
+        stop.pointee = true
+        return value.range(of: "a", options: .caseInsensitive) != nil
+    }
+    return false
+})
+for keyObj in result9 {
+    if let key = keyObj as? NSString, let value = words13[key] {
+        print("\(key) - \(value)")
+    }
+}
+
+let words14 = ["A": "Apple", "B": "Banana", "C": "City"]
+if words14.contains(where: { (key, value) -> Bool in return key == "A" }) {
+    print("contains A key.")
+}
+if words14.contains(where: { $0.1 == "City" }) {
+    print("contains City value.")
+}
+
+let words15 = ["A": "Apple", "B": "Banana", "C": "City"]
+let result10 = words15.filter { (key, value) -> Bool in
+    return value.lowercased().contains("a")
+}
+for (key, value) in result10 {
+    print("\(key) - \(value)")
+}
+
+let words16: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
+let anotherWords = ["B": "Banana", "C": "City", "A": "Apple"]
+let countryCodes = ["KR": "South Korea", "US": "United States"]
+if words16.isEqual(to: anotherWords) {
+    print("words16 == anotherWords")
+} else {
+    print("words16 != anotherWords")
+}
+if words16.isEqual(to: countryCodes) {
+    print("words16 == countryCodes")
+} else {
+    print("words16 != countryCodes")
+}
+
+let words17 = ["A": "Apple", "B": "Banana", "C": "City"]
+let anotherWords2 = ["B": "Banana", "C": "City", "A": "Apple"]
+let countryCodes2 = ["KR": "South Korea", "US": "United States"]
+if words17 == anotherWords2 {
+    print("words17 == anotherWords2")
+} else {
+    print("words17 != anotherWords2")
+}
+if words17 == countryCodes2 {
+    print("words17 == countryCodes2")
+} else {
+    print("words17 != countryCodes2")
+}
+
+let words18 = ["A": "Apple", "B": "Banana", "C": "City"]
+let upperWords = ["A": "APPLE", "B": "BANANA", "C": "CITY"]
+if words18 == upperWords {
+    print("words18 == upperWords")
+} else {
+    print("words18 != upperWords")
+}
+
+let words19 = ["A": "Apple", "B": "Banana", "C": "City"]
+let upperWords2 = ["A": "APPLE", "B": "BANANA", "C": "CITY"]
+let equals = words19.elementsEqual(upperWords2) { (lhs, rhs) -> Bool in
+    return lhs.0.lowercased() == rhs.0.lowercased() && lhs.1.lowercased() == rhs.1.lowercased()
+}
+print(equals)
