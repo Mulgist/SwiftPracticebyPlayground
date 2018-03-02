@@ -2,6 +2,7 @@
 
 import UIKit
 
+// Array
 let stringArray = ["Apple", "Orange", "Banana"]
 
 let stringNSArray: NSArray = ["Apple", "Orange", "Banana"]
@@ -368,6 +369,7 @@ var reversedList = [String]()
 reversedList.reserveCapacity(100)
 print("total: \(reversedList.capacity), current: \(reversedList.count)")
 
+// Dictionary
 let words = ["A": "Apple", "B": "Banana", "C": "City"]
 let nsWords: NSDictionary = ["A": "Apple", "B": "Banana", "C": "City"]
 
@@ -534,3 +536,177 @@ let equals = words19.elementsEqual(upperWords2) { (lhs, rhs) -> Bool in
     return lhs.0.lowercased() == rhs.0.lowercased() && lhs.1.lowercased() == rhs.1.lowercased()
 }
 print(equals)
+
+let words20 = NSMutableDictionary()
+words20.setObject("Apple", forKey: "A" as NSCopying)
+words20.setObject("Banana", forKey: "B" as NSCopying)
+print(words20)
+words20.setObject("Blue", forKey: "B" as NSCopying)
+print(words20)
+
+let words21 = NSMutableDictionary()
+words21["A"] = "Apple"
+words21["B"] = "Banana"
+print(words21)
+words21["B"] = "Blue"
+print(words21)
+
+var words22 = [String:String]()
+words22["A"] = "Apple"
+words22["B"] = "Banana"
+print(words22)
+words22["B"] = "Blue"
+print(words22)
+
+var words23 = [String:String]()
+if let oldValue = words23.updateValue("Apple", forKey: "A") {
+    print("\(oldValue) => \(words["A"]!)")
+} else {
+    print("+ \(words["A"]!)")
+}
+if let oldValue = words23.updateValue("Apricot", forKey: "A") {
+    print("\(oldValue) => \(words["A"]!)")
+} else {
+    print("+ \(words["A"]!)")
+}
+
+var words24 = ["A": "Apple", "B": "Banana", "C": "City"]
+words24["C"] = nil
+print(words24)
+
+let nsWords2 = NSMutableDictionary(dictionary: ["A": "Apple", "B": "Banana", "C": "City"])
+nsWords2["C"] = nil
+print(nsWords2)
+
+let words25 = NSMutableDictionary(dictionary: ["A": "Apple", "B": "Banana", "C": "City", "D": "Drama", "E": "Earth", "F": "Fuel"])
+words25.removeObject(forKey: "D")
+print(words25)
+words25.removeObjects(forKeys: ["A", "F"])
+print(words25)
+words25.removeAllObjects()
+print(words25)
+
+var words26 = ["A": "Apple", "B": "Banana", "C": "City", "D": "Drama", "E": "Earth", "F": "Fuel"]
+if let removeValue = words26.removeValue(forKey: "D") {
+    print("\(removeValue) removed!")
+}
+print(words26)
+words26.removeAll()
+print(words26)
+
+words26.removeAll(keepingCapacity: true)
+
+// Set
+let fruitsArray = ["Apple", "Orange", "Melon"]
+let fruitsFromArray = NSSet(array: fruitsArray)
+let fruitsFromSet = NSSet(set: fruitsFromArray)
+let fruits7 = NSSet(objects: "Apple", "Orange", "Melon")
+let emptySet = NSSet()
+
+let fruits8: Set<String> = ["Apple", "Orange", "Melon"]
+let numbers: Set = [1, 2, 3]
+let emptySet2 = Set<String>()
+
+let fruits9: Set<String> = ["Apple", "Orange", "Melon"]
+var countOfFruits2 = fruits9.count
+if !fruits9.isEmpty {
+    print("\(countOfFruits2) element(s)")
+} else {
+    print("empty set")
+}
+
+let nsFruits = NSSet(set: fruits9)
+countOfFruits2 = nsFruits.count
+if let _ = nsFruits.anyObject() {
+    print("\(countOfFruits2) element(s)")
+} else {
+    print("empty set")
+}
+
+let fruits10: NSSet = ["Apple", "Orange", "Melon"]
+if fruits10.contains("Apple") {
+    // ...
+}
+let fruits11 = ["Apple", "Orange", "Melon"]
+if fruits11.contains("Apple") {
+    // ...
+}
+
+let productSet = NSSet(objects: "iPhone", "iPad", "Mac Pro", "iPad Pro", "Macbook Pro")
+let prefixPredicate2 = NSPredicate(format: "SELF BEGINSWITH %@", "i")
+let filteredSet = productSet.filtered(using: prefixPredicate2)
+print(filteredSet)
+
+let mutableProductSet = NSMutableSet(set: productSet)
+let suffixPredicate2 = NSPredicate(format: "SELF ENDSWITH %@", "o")
+mutableProductSet.filtered(using: suffixPredicate2)
+print(mutableProductSet)
+
+let productSet2: Set = ["iPhone", "iPad", "Mac Pro", "iPad Pro", "Macbook Pro"]
+let filteredSet2 = productSet2.filter { $0.hasPrefix("i") }
+print(filteredSet2)
+
+let set = NSMutableSet()
+set.add("Apple")
+set.add("Apple")
+print(set)
+var alphabet40 = ["A", "B"]
+set.addObjects(from: alphabet40)
+print(set)
+alphabet40 = ["A", "B", "C"]
+set.addObjects(from: alphabet40)
+print(set)
+
+var set2: Set<String> = []
+set2.insert("Apple")
+print(set2)
+var result11 = set2.insert("Orange")
+print(result11)
+print(set2)
+result11 = set2.insert("Orange")
+print(result11)
+print(set2)
+
+let set3 = NSMutableSet(array: ["Apple", "Orange", "Melon"])
+set3.remove("Apple")
+print(set3)
+set3.removeAllObjects()
+print(set3)
+
+var set4: Set = ["Apple", "Orange", "Melon"]
+if let removed = set4.remove("Apple") {
+    print("\(removed) has been removed!")
+}
+print(set4)
+set4.removeAll(keepingCapacity: true)
+print(set4)
+
+let favoriteFruits = NSSet(objects: "Apple", "Orange", "Melon")
+let tropicalFruits = NSSet(objects: "Banana", "Papaya", "Kiwi", "Pineapple")
+if favoriteFruits.isEqual(to: tropicalFruits as Set<NSObject>) {
+    print("favoriteFruits == tropicalFruits")
+} else {
+    print("favoriteFruits != tropicalFruits")
+}
+
+let favoriteFruits2 = Set(["Apple", "Orange", "Melon"])
+let tropicalFruits2 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+if favoriteFruits2 == tropicalFruits2 {
+    print("favoriteFruits2 == tropicalFruits2")
+} else {
+    print("favoriteFruits2 != tropicalFruits2")
+}
+if favoriteFruits2.elementsEqual(tropicalFruits2) {
+    print("favoriteFruits2 == tropicalFruits2")
+} else {
+    print("favoriteFruits2 != tropicalFruits2")
+}
+
+let tropicalFruits3 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+let yellowFruits = NSSet(array: ["Banana"])
+if yellowFruits.isSubset(of: tropicalFruits3) {
+    print("yellowFruits ⊂ tropicalFruits")
+} else {
+    print("yellowFruits ⊄ tropicalFruits")
+}
+
