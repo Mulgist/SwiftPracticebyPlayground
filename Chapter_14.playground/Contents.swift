@@ -703,10 +703,172 @@ if favoriteFruits2.elementsEqual(tropicalFruits2) {
 }
 
 let tropicalFruits3 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
-let yellowFruits = NSSet(array: ["Banana"])
+// let yellowFruits = NSSet(array: ["Banana"])
+let yellowFruits = NSSet(array: ["Banana", "Papaya", "Kiwi", "Pineapple"])
 if yellowFruits.isSubset(of: tropicalFruits3) {
-    print("yellowFruits ⊂ tropicalFruits")
+    print("yellowFruits ⊆ tropicalFruits3")
 } else {
-    print("yellowFruits ⊄ tropicalFruits")
+    print("yellowFruits ⊈ tropicalFruits3")
 }
 
+let tropicalFruits4 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+let yelloFruits2 = Set(["Banana"])
+if yelloFruits2.isSubset(of: tropicalFruits4) {
+    print("yellowFruits2 ⊆ tropicalFruits4")
+} else {
+    print("yellowFruits2 ⊈ tropicalFruits4")
+}
+if yelloFruits2.isStrictSubset(of: tropicalFruits4) {
+    print("yellowFruits2 ⊂ tropicalFruits4")
+} else {
+    print("yellowFruits2 ⊄ tropicalFruits4")
+}
+if tropicalFruits4.isSuperset(of: yelloFruits2) {
+    print("tropicalFruits4 ⊇ yelloFruits2")
+} else {
+    print("tropicalFruits4 ⊉ yelloFruits2")
+}
+if tropicalFruits4.isStrictSuperset(of: yelloFruits2) {
+    print("tropicalFruits4 ⊃ yelloFruits2")
+} else {
+    print("tropicalFruits4 ⊅ yelloFruits2")
+}
+
+let favoriteFruits3 = NSSet(array: ["Apple", "Orange", "Melon", "Kiwi"])
+let tropicalFruits5 = NSMutableSet(array: ["Banana", "Papaya", "Kiwi", "Pineapple"])
+if favoriteFruits3.intersects(tropicalFruits5 as Set<NSObject>) {
+    print("favoriteFruits3 ∩ tropicalFruits5")
+    tropicalFruits5.intersect(favoriteFruits3 as Set<NSObject>)
+    print(tropicalFruits5)
+} else {
+    print("favoriteFruits3 ∩ tropicalFruits5 = ∅")
+}
+
+let favoriteFruits4 = Set(["Apple", "Orange", "Melon", "Kiwi"])
+var tropicalFruits6 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+if favoriteFruits4.isDisjoint(with: tropicalFruits6) {
+    print("favoriteFruits4 ∩ tropicalFruits6 = ∅")
+} else {
+    print("favoriteFruits4 ∩ tropicalFruits6")
+}
+let commonSet = favoriteFruits4.intersection(tropicalFruits6)
+print(commonSet)
+tropicalFruits6.formIntersection(favoriteFruits4)
+print(tropicalFruits6)
+
+let favoriteFruits5 = Set(["Apple", "Orange", "Melon", "Kiwi"])
+var tropicalFruits7 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+let unionSet = NSMutableSet(set: favoriteFruits5)
+unionSet.union(tropicalFruits7)
+print(unionSet)
+
+let favoriteFruits6 = Set(["Apple", "Orange", "Melon", "Kiwi"])
+var tropicalFruits8 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+var unionSet2 = favoriteFruits6.union(tropicalFruits8)
+print(unionSet2)
+unionSet2 = Set(favoriteFruits6)
+unionSet2.formUnion(tropicalFruits8)
+print(unionSet2)
+
+let favoriteFruits7 = NSMutableSet(array: ["Apple", "Orange", "Melon", "Kiwi"])
+let tropicalFruits9 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+favoriteFruits7.minus(tropicalFruits9)
+print(favoriteFruits7)
+
+var favoriteFruits8 = Set(["Apple", "Orange", "Melon", "Kiwi"])
+let tropicalFruits10 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+let uncommonSet = favoriteFruits8.subtracting(tropicalFruits10)
+print(uncommonSet)
+favoriteFruits8.subtract(tropicalFruits10)
+print(favoriteFruits8)
+
+var favoriteFruits9 = Set(["Apple", "Orange", "Melon", "Kiwi"])
+let tropicalFruits11 = Set(["Banana", "Papaya", "Kiwi", "Pineapple"])
+let exclusiveSet = favoriteFruits9.symmetricDifference(tropicalFruits11)
+print(exclusiveSet)
+favoriteFruits9.formSymmetricDifference(tropicalFruits11)
+
+let set5 = NSCountedSet()
+set5.add("Apple")
+set5.add("Apple")
+set5.add("Apple")
+print(set5)
+var countOfApple = set5.count(for: "Apple")
+print(countOfApple)
+set5.remove("Apple")
+print(set5)
+countOfApple = set5.count(for: "Apple")
+print(countOfApple)
+set5.remove("Apple")
+set5.remove("Apple")
+print(set5)
+countOfApple = set5.count(for: "Apple")
+print(countOfApple)
+
+let array = ["Apple", "Orange", "Melon"]
+for value in array {
+    if let index = array.index(of: value) {
+        print("\(index) - \(value)")
+    }
+}
+let set6 = Set(array)
+for value in set6 {
+    print(value)
+}
+
+let array2 = ["Apple", "Orange", "Melon"]
+for value in array2.reversed() {
+    if let index = array2.index(of: value) {
+        print("\(index) - \(value)")
+    }
+}
+
+let alphabet41 = ["A", "B", "C"]
+for t in alphabet41.enumerated() {
+    print("#\(t.0) - \(t.1)")
+}
+for (index, char) in alphabet41.enumerated() {
+    print("#\(index) - \(char)")
+}
+
+let dict = ["A": "Apple", "B": "Banana", "C": "City"]
+for (key, value) in dict {
+    print("\(key): \(value)")
+}
+
+let words27 = ["A": "Apple", "B": "Banana", "C": "City"]
+for key in words27.keys {
+    print(key)
+}
+for val in words27.values {
+    print(val)
+}
+
+let words28 = ["A": "Apple", "B": "Banana", "C": "City"]
+let keyArray = Array(words28.keys)
+let valueArray = Array(words28.values)
+
+var array3 = ["Apple", "Orange", "Melon", "Apple", "Orange", "Melon"]
+for value in array3 {
+    if value == "Melon" {
+        if let index = array3.index(of: value) {
+            // array.remove(at: index)  // Error
+        }
+    }
+}
+
+var array4 = ["Apple", "Orange", "Melon", "Apple", "Orange", "Melon"]
+var deleteSet = Set<String>()
+for value in array4 {
+    if value == "Melon" {
+        deleteSet.insert(value)
+    }
+}
+for value in deleteSet {
+    var index = array4.index(of: value)
+    while index != nil {
+        array4.remove(at: index!)
+        index = array4.index(of: value)
+    }
+}
+print(array4)
